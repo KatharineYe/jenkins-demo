@@ -1,7 +1,7 @@
 pipeline {
   // 设置全局变量
   environment {}
-  agent all
+  agent any
   stages {
     // 进行maven构建
     stage('Build jar file') {
@@ -9,7 +9,11 @@ pipeline {
             sh 'mvn -DskipTests clean package'
         }
     }
-
+    stage('Test') {
+        steps {
+            echo 'Testing...'
+        }
+    }
     // 部署
     stage('Deploy Environment') {
         steps {
