@@ -6,7 +6,8 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'echo "Hello World"'
+                sh 'mvn -DskipTests clean package'
+                sh 'echo "build###"'
                 sh '''
                     echo "Multiline shell steps works too"
                     ls -lah
@@ -16,6 +17,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing...'
+                sh 'java -jar target/jenkins-demo-1.0-SNAPSHOT-jar-with-dependencies.jar'
             }
         }
     }
