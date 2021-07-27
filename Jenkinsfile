@@ -20,6 +20,11 @@ pipeline {
                 sh 'java -jar target/jenkins-demo-1.0-SNAPSHOT-jar-with-dependencies.jar'
             }
         }
+        stage('Deploy') {
+            steps {
+                echo 'Deploy...'
+            }
+        }
     }
     post {
         always {
