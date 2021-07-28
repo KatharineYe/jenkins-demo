@@ -29,7 +29,6 @@
                             <archive>
                                 <manifest>
                                     <mainClass>
-                                        <!-- 替换为你自己的类 -->
                                         Main
                                     </mainClass>
                                 </manifest>
