@@ -2,13 +2,24 @@ pipeline {
   agent any
   stages {
     stage('build') {
-      steps {
-        sh 'mvn -DskipTests clean package'
-        sh 'echo "build###"'
-        sh '''
+      parallel {
+        stage('build1') {
+          steps {
+            sh 'mvn -DskipTests clean package'
+            sh 'echo "build###"'
+            sh '''
                     echo "Multiline shell steps works too"
                     ls -lah
                 '''
+          }
+        }
+
+        stage('build2') {
+          steps {
+            echo 'aaa'
+          }
+        }
+
       }
     }
 
